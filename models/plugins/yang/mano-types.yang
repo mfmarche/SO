@@ -1156,6 +1156,12 @@ module mano-types
         default "GET";
       }
 
+      leaf data {
+        description
+          "This is the data to be sent with POST ";
+        type  string;
+      }
+
       list headers {
         description "Custom HTTP headers to put on HTTP request";
         key key;

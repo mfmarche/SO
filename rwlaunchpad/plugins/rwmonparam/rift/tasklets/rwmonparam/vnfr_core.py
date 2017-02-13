@@ -270,6 +270,12 @@ class HTTPEndpoint(object):
         return "GET"
 
     @property
+    def query_data(self):
+        if self._ep_msg.has_field("data"):
+           return self._ep_msg.data
+        return None
+
+    @property
     def username(self):
         if self._ep_msg.has_field("username"):
             return self._ep_msg.username
@@ -320,9 +326,10 @@ class HTTPEndpoint(object):
     def _poll(self):
         try:
             resp = self._session.request(
-                    self.method, self.url, timeout=10, auth=self.auth,
-                    headers=self.headers, verify=False
-                    )
+                      self.method, self.url, timeout=10, auth=self.auth,
+                      headers=self.headers, verify=False, data=self.query_data
+                      )
+               
             resp.raise_for_status()
         except requests.exceptions.RequestException as e:
             msg = "Got HTTP error when request monitoring method {} from url {}: {}".format(
