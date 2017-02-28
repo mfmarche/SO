@@ -290,7 +290,7 @@ class VirtualDeploymentUnitRecord(object):
         self._state = VDURecordState.INIT
         self._state_failed_reason = None
         self._request_id = str(uuid.uuid4())
-        self._name = vnfr.name + "__" + vdud.id
+        self._name = vnfr.name + "--" + vdud.id
         self._placement_groups = placement_groups
         self._rm_regh = None
         self._vm_resp = None
