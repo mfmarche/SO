@@ -893,7 +893,7 @@ class VirtualNetworkFunctionRecord(object):
 
         name_tags.extend([self.vnfd.name, str(self.member_vnf_index)])
 
-        self._name = "--".join(name_tags)
+        self._name = "__".join(name_tags)
 
         return self._name
 
