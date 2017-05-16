@@ -2448,6 +2448,7 @@ class NetworkServiceRecord(object):
         """ Terminate VNFRS in this network service """
         self._log.debug("Terminating VNFs in network service %s", self.id)
         for vnfr in vnfrs:
+            self._vnfrs.pop(vnfr.id, None)
             yield from self.nsm_plugin.terminate_vnf(vnfr)
 
     @asyncio.coroutine
